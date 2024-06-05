@@ -1,7 +1,8 @@
 ![](project-logo.jpeg)
+
 # Search Engine Project
 
-The Search Engine Project is a web crawling application crafted in C++, intended to scan internet websites and archive the collected data into a MySQL database. It empowers users with the ability to input search queries, and the application provides search results consisting of links containing the specified keywords. The links are sorted using the Pagerank algorithm, which ranks internet pages to prioritize the most relevant search results. Additionally, the project supports receiving queries from remote users through the TCP protocol. The project utilizes multithreading to enhance efficiency and enable concurrent searching and crawling, allowing users to search for information even while the crawling process is ongoing. It offers flexibility in its configuration options, allowing users to customize its behavior through a configuration file. Parameters such as scanning type (BFS or DFS), sorting method, and client interface (local or remote) can be defined to tailor the application to specific preferences and requirements.
+The Search Engine Project is a web crawling application crafted in C++, intended to scan internet websites and archive the collected data into a MySQL database. It empowers users with the ability to input search queries, and the application provides search results consisting of links containing the specified keywords. The links are sorted using the [Pagerank](https://en.wikipedia.org/wiki/PageRank "Wiki") algorithm, which ranks internet pages to prioritize the most relevant search results. Additionally, the project supports receiving queries from remote users through the [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol "wiki") protocol. The project utilizes multithreading to enhance efficiency and enable concurrent searching and crawling, allowing users to search for information even while the crawling process is ongoing. It offers flexibility in its configuration options, allowing users to customize its behavior through a configuration file. Parameters such as scanning type ([BFS](https://en.wikipedia.org/wiki/Breadth-first_search "wiki") or [DFS](https://en.wikipedia.org/wiki/Depth-first_search "Wiki")), sorting method, and client interface (local or remote) can be defined to tailor the application to specific preferences and requirements.
 
 ## Main Objects
 
@@ -17,15 +18,14 @@ The `Search_engine` class is the application responsible for handling user queri
 - **Searcher Instance**: The `Search_engine` utilizes an instance of the `Searcher` interface to retrieve relevant search results from a specific database.
 - **Sorter Instance**: Additionally, the `Search_engine` holds an instance of the `Sorter` interface to organize search results effectively. It can sort results either by word instances, the Pagerank algorithm, or any other custom sorting method specified.
 
- 
-
+## UML Class Diagram 
+![](uml_project.png)
 ## Design Patterns
-
 
 ### Singleton
 
 The Singleton pattern is implemented for the `Configuration` class because many classes interact with it, and it holds important configuration settings such as the length of result links, number of threads, scanning type (BFS or DFS), sorting method, and whether the application is used locally or remotely. By making `Configuration` a Singleton, we ensure that there is only one instance of it throughout the application, and all classes can access its settings consistently.
- 
+
 ### Observer
 
 During the crawling process, whenever the `Updater` class finishes inserting a buffer of links into the database, it notifies the `Pagerank` class. The `Pagerank` class then calculates the Pagerank scores for the newly inserted links. This ensures that Pagerank scores are updated in real-time as new data is added to the database.
@@ -34,21 +34,24 @@ During the crawling process, whenever the `Updater` class finishes inserting a b
 
  The `Crawler` and `Search_engine` classes interact with various components and rely heavily on different parameters, such as sorting method, scanning type, number of threads, and other important settings provided by the `Configuration` class. These dependencies are injected during object creation, allowing for easier testing and modification. This approach enables greater flexibility and maintainability by decoupling the classes from specific implementations and allowing them to be customized based on configuration settings.
 
-
 ## Dependencies
 
-- **Gumbo Parser** : Used for parsing HTML content and extracting links from web pages. 
-<br />Install it using the command
+- **Gumbo Parser** : Used for parsing HTML content and extracting links from web pages.
+  `<br />`Install it using the command
+
 ```sh
 sudo apt install -y libgumbo-dev
 ```
 
-- **Curlpp**: Used for downloading pages from URLs. 
-<br />Install it using the command
+- **Curlpp**: Used for downloading pages from URLs.
+  `<br />`Install it using the command
+
 ```sh
 sudo apt install -y libcurlpp-dev
 ```
-- **MySQL Connector/C++**: Required for database interaction.<br />Install it using the command
+
+- **MySQL Connector/C++**: Required for database interaction.`<br />`Install it using the command
+
 ```sh
 sudo apt-get install libmysqlcppconn-dev
 ```

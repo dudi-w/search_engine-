@@ -54,6 +54,12 @@ sudo apt install -y libgumbo-dev
 sudo apt install -y libcurlpp-dev
 ```
 
+- **MySQL Server***:Required for storge data
+
+```sh
+sudo apt install mysql-server
+```
+
 - **MySQL Connector/C++**: Required for database interaction.
   Install it using the command
 
@@ -66,18 +72,54 @@ sudo apt-get install libmysqlcppconn-dev
 ## Installing and running the program
 
 - Clone the repository
+
 ```sh
 git clone https://github.com/israelberger2/search_engine-.git
 cd search_engine-
-``` 
+```
+
 - Compile the files
+
 ```sh
 make -j4
 ```
-- Update the file `![configuration](includes/configuration.json)` according to your settings
-```sh
-nano search_engine-/includes/configuration.json
+
+- Create MySql User
+
+```sql
+mysql>
+mysql>
+mysql>
 ```
-- Run the program
+
+- Update the file [configuration](includes/configuration.json) according to your settings
+
 ```sh
+nano includes/configuration.json
+```
+
+```nano
+{  
+  "sql_password": "<password>",
+  "sql_username": "<user name>",
+  "sql_schema": "<schema name>",
+  "sql_connectionString": "tcp://127.0.0.1:3306",
+  "scans":500,
+  "scanType": "bfs",
+  "threads":1,
+  "lengthResult":10,
+  "linksMountForPagerank": 5,
+  "ip": "127.0.0.1",
+  "port": 8080,
+  "clientType": "local",
+  "sortType": "pageRank",
+  "StartOfLink": "https://harrypotter.fandom.com",
+  "addresses": ["https://harrypotter.fandom.com/wiki/Main_Page"]
+}
+```
+
+- Run the program
+
+```sh
+
 ```

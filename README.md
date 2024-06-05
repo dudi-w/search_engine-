@@ -85,14 +85,32 @@ make -j4
 ```
 
 - Create MySql User and Schema
+Log In to MySQL
 ```sh
-sudo mysql
+sudo mysql -u root -p
 ```
 for example: 
 ```sql
-mysql>
-mysql>
-mysql>
+CREATE USER 'SE_admin'@'localhost' IDENTIFIED BY 'SE_password';
+CREATE DATABASE search_engine ;
+GRANT ALL PRIVILEGES ON search_engine.* TO 'SE_admin'@'localhost';
+FLUSH PRIVILEGES;
+exit;
+```
+and then
+```sh
+mysql -u SE_admin -p search_engine < db/sql_code
+```
+
+- Verify that the SQL server is indeed listening to the port (Otherwise change the port number in the configuration file)
+Log In to MySQL
+```sh
+sudo mysql -u root -p
+```
+
+```sql
+SHOW VARIABLES LIKE 'port';
+exit;
 ```
 
 - Update the file [configuration](includes/configuration.json) according to your settings

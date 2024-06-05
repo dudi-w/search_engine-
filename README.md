@@ -1,4 +1,4 @@
-
+![](project-logo.jpeg)
 # Search Engine Project
 
 The Search Engine Project is a web crawling application crafted in C++, intended to scan internet websites and archive the collected data into a MySQL database. It empowers users with the ability to input search queries, and the application provides search results consisting of links containing the specified keywords. The links are sorted using the Pagerank algorithm, which ranks internet pages to prioritize the most relevant search results. Additionally, the project supports receiving queries from remote users through the TCP protocol. The project utilizes multithreading to enhance efficiency and enable concurrent searching and crawling, allowing users to search for information even while the crawling process is ongoing. It offers flexibility in its configuration options, allowing users to customize its behavior through a configuration file. Parameters such as scanning type (BFS or DFS), sorting method, and client interface (local or remote) can be defined to tailor the application to specific preferences and requirements.
@@ -38,14 +38,19 @@ During the crawling process, whenever the `Updater` class finishes inserting a b
 ## Dependencies
 
 - **Gumbo Parser** : Used for parsing HTML content and extracting links from web pages. 
-<br />Install it using the command: `sudo apt install -y libgumbo-dev`
+<br />Install it using the command
+```sh
+sudo apt install -y libgumbo-dev
+```
 
 - **Curlpp**: Used for downloading pages from URLs. 
-<br />Install it using the command: `sudo apt install -y libcurlpp-dev`
-
-- **MySQL Connector/C++**: Required for database interaction.<br />Install it using the command: `sudo apt-get install libmysqlcppconn-dev`
+<br />Install it using the command
+```sh
+sudo apt install -y libcurlpp-dev
+```
+- **MySQL Connector/C++**: Required for database interaction.<br />Install it using the command
+```sh
+sudo apt-get install libmysqlcppconn-dev
+```
 
 - **GCC Compiler**: Project requires `g++` compiler (version 7.3+) with C++17 support.
-
- 
- 

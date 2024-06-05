@@ -84,8 +84,11 @@ cd search_engine-
 make -j4
 ```
 
-- Create MySql User
-
+- Create MySql User and Schema
+```sh
+sudo mysql
+```
+for example: 
 ```sql
 mysql>
 mysql>
